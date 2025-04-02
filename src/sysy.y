@@ -42,7 +42,7 @@ using namespace std;
   %token <int_val> INT_CONST
   
   // 非终结符的类型定义
-  %type <ast_val> FuncDef FuncType Block Stmt Number
+  %type <ast_val> FuncDef FuncType Block Stmt
   %type <int_val> Number
 
   %%
