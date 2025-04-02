@@ -35,11 +35,11 @@ public:
     void Dump() const override {
         if (mode == "-debug") {
             cout << "CompUnitAST { ";
-            func_def->print();
+            func_def->Dump();
             cout << " }";
         }
         else if (mode == "-koopa") {
-            func_def->print();
+            func_def->Dump();
         }
     }
 };
@@ -53,16 +53,16 @@ public:
     void Dump() const override {
         if (mode == "-debug") {
             cout << "FuncDefAST { ";
-            func_type->print();
+            func_type->Dump();
             cout << ", " << ident << ", ";
-            block->print();
+            block->Dump();
             cout << " }";
         }
         else if (mode == "-koopa") {
             cout << "fun @" << ident << "(): ";
-            func_type->print();
+            func_type->Dump();
             cout << " {" << endl;
-            block->print();
+            block->Dump();
             cout << "}" << endl;
         }
     }
@@ -92,12 +92,12 @@ public:
     void Dump() const override {
         if (mode == "-debug") {
             cout << "BlockAST { ";
-            stmt->print();
+            stmt->Dump();
             cout << " }";
         }
         else if (mode == "-koopa") {
             cout << "%entry:" << endl;
-            stmt->print();
+            stmt->Dump();
         }
     }
 };
