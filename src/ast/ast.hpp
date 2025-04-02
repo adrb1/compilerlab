@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -32,9 +33,9 @@ public:
     // 用智能指针管理对象
     unique_ptr<BaseAST> func_def;
     void Dump() const override {
-        cout << "CompUnitAST { ";
+        std::cout << "CompUnitAST { ";
         func_def->Dump();
-        cout << " }";
+        std::cout << " }";
       }
 };
    
@@ -57,7 +58,7 @@ class FuncTypeAST : public BaseAST {
 public:
     string type;
     void Dump() const override {
-        cout << "FuncTypeAST { " << type << " }";
+       std::cout << "FuncTypeAST { " << type << " }";
     }
 }
 
@@ -66,9 +67,9 @@ public:
     unique_ptr<BaseAST> stmt;
 
     void Dump() const override {
-        cout << "BlockAST { ";
+        std::cout << "BlockAST { ";
         stmt->Dump();
-        cout << " }";
+        std::cout << " }";
     }
 
 };
@@ -77,7 +78,7 @@ class StmtAST : public BaseAST {
 public:
     int number;
     void Dump() const override {
-        cout << "StmtAST { " << number << " }";
+        std::cout << "StmtAST { " << number << " }";
     }
 
 };
