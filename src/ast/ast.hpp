@@ -60,7 +60,7 @@ public:
     void Dump() const override {
        std::cout << "FuncTypeAST { " << type << " }";
     }
-}
+};
 
 class BlockAST : public BaseAST {
 public:
