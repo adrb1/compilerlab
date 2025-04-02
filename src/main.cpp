@@ -7,11 +7,7 @@
 
 using namespace std;
 
-// 声明 lexer 的输入, 以及 parser 函数
-// 为什么不引用 sysy.tab.hpp 呢? 因为首先里面没有 yyin 的定义
-// 其次, 因为这个文件不是我们自己写的, 而是被 Bison 生成出来的
-// 你的代码编辑器/IDE 很可能找不到这个文件, 然后会给你报错 (虽然编译不会出错)
-// 看起来会很烦人, 于是干脆采用这种看起来 dirty 但实际很有效的手段
+
 extern FILE *yyin;
 extern int yyparse(unique_ptr<BaseAST> &ast);
 
@@ -34,11 +30,10 @@ int main(int argc, const char *argv[]) {
   auto ret = yyparse(ast);
   assert(!ret);
 
-
   // dump AST
+  freopen(output, "w", stdout);
   ast->Dump();
   cout << endl;
-  /* // 输出解析得到的 AST, 其实就是个字符串
-  cout << *ast << endl; */
+  fclose(stdout);
   return 0;
 }
